@@ -3,11 +3,28 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+  constructor(props){
+  super(props)
+  this.state ={
+    activation : true,
+    logoSpeed: "app-logo"
+  }
+}
+handle =() =>{
+  this.setState({activation:! this.state.activation})
+  if (this.state.activation === true){
+    this.setState({ logoSpeed: 'App-logo'})
+  }else{
+    this.setState({ logoSpeed: 'App-logo-speed'})
+  }
+}
+
   render() {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
+          <img src={logo} className={this.state.logoSpeed }alt="logo" />
+          <button onClick={this.handle}> Click here</button>
           <p>
             Edit <code>src/App.js</code> and save to reload.
           </p>
